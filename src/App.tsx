@@ -1,4 +1,5 @@
-import {Button, Profile} from "@/components";
+import { Product } from "@/components";
+import classes from './App.module.scss';
 
 
 
@@ -7,10 +8,10 @@ const App = () => {
 
 
   return (
-    <>
-    <Button/>
-    <Profile/>
-    </>
+    <div className={classes.app}>
+    <Product>
+    </Product>
+    </div>
   );
 }
 

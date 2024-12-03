@@ -1,8 +1,9 @@
+import classes from './Button.module.scss'
 
-const Button = () => {
-  return (
-    <button>Кнопка</button>
-  )
-}
+const Button: React.FC<{
+  label: string
+}> = ({ label }) => {
+  return <button className={classes.btn}>{label}</button>;
+};
 
-export default Button 
+export default Button;
