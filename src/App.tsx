@@ -1,5 +1,7 @@
-import { Product } from "@/components";
-import classes from './App.module.scss';
+import { Layout, ProductCard } from "@/components";
+import Profile from "./components/Profile/Profile";
+import CatalogPage from "./pages/CatalogPage/CatalogPage";
+
 
 
 
@@ -8,9 +10,11 @@ const App = () => {
 
 
   return (
-    <div className={classes.app}>
-    <Product>
-    </Product>
+    <div>
+  <Layout>
+    <Profile firstName="Иван" LastName="Иванов"/>
+    <CatalogPage/>
+  </Layout>
     </div>
   );
 }
