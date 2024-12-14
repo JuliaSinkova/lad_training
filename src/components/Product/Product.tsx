@@ -6,6 +6,7 @@ import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons/faStar";
 import Button from "../Button/Button";
 import { Product } from "@/types/Product";
+import ChangeCount from "./components/ChangeCount";
 
 type ProductProps = {
   product : Product
@@ -14,9 +15,16 @@ type ProductProps = {
 const ProductCard = ({product} : ProductProps) => {
 
   const [isFavorite, setIsFavorite] = useState(product.isFavorite);
+  const [count, setCount] = useState<number>(0);
   const handleFavorite = () => {
     setIsFavorite((prev: boolean) => !prev);
   };
+  const handleAddCard = () => {
+    setCount(prev => prev + 1)
+  }
+  const handleRemoveCard = () => {
+    setCount(prev => prev - 1)
+  }
   return (
     <div className={classes.productCard}>
         <div className={classes.header}>
@@ -41,7 +49,9 @@ const ProductCard = ({product} : ProductProps) => {
       <div className={classes.price_old}>{}</div>
       <div className={classes.discount}>-{product.discount}%</div>
       </div>
-      <Button onClick={() => alert('Добавлено в корзину')}>Купить</Button>
+      {count > 0 && `Добавлено в корзину ${count}`}
+      <Button onClick={handleAddCard}>Купить</Button>
+     <ChangeCount onAdd={handleAddCard} onDecrement={handleRemoveCard} count={count}/>
     </div>
   );
 };
