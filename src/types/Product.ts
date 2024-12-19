@@ -5,5 +5,6 @@ export type Product = {
     price: number,
     discount?: number,
     rating: number,
-    isFavorite: boolean
+    isFavorite: boolean,
+    count?: number
 }

@@ -1,0 +1,24 @@
+.block{
+    display: grid;
+    grid-template-columns: 30px 50px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+}
+.btn{
+    padding: 5px;
+    width: 35px;
+    background-color: #fff;
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn:hover{
+    background-color: #eee;
+}
