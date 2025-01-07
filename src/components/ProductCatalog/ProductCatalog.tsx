@@ -1,28 +1,17 @@
 import classes from "./ProductCatalog.module.scss";
 import ProductCard from "../Product/Product";
-import { Product } from "@/types/Product";
+import { useContext } from "react";
+import { CartContext } from "@/context/CartContext/CartContext";
 
-type ProductCatalogProps = {
-  products: Product[];
-  onIncrement: (product: Product) => void;
-  onDecrement: (product: Product) => void;
-  onFavorite: (product: Product) => void;
-};
-function ProductCatalog({
-  products,
-  onIncrement,
-  onDecrement,
-  onFavorite,
-}: ProductCatalogProps) {
+
+const ProductCatalog = () => {
+  const {state, dispatch} = useContext(CartContext);
   return (
     <div className={classes.catalog}>
-      {products.map((item) => (
+      {state.map((item) => (
         <ProductCard
           key={item.id}
           product={item}
-          onIncrement={onIncrement}
-          onDecrement={onDecrement}
-          onFavorite={onFavorite}
         />
       ))}
     </div>

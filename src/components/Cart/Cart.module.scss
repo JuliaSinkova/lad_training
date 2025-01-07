@@ -17,6 +17,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 25px;
+  .block{
+    
+  }
 }
 .clear {
   width: fit-content;
@@ -32,7 +35,7 @@
   background-color: #940403;
 }
 .remove {
-  background-color: #fff;
+  background-color: transparent;
   border: none;
   display: flex;
   gap: 10px;
@@ -41,7 +44,7 @@
 }
 .favorite {
   width: fit-content;
-  background-color: #fff;
+  background-color: transparent;
   border: none;
   display: flex;
   gap: 10px;

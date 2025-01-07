@@ -3,7 +3,12 @@
   height: 500px;
   border-radius: 25px;
   padding: 30px;
+  &__light{
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  &__dark{
+    background-color: #262626;
+  }
   font-family: sans-serif;
 }
 .header {

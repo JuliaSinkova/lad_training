@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import classes from "./Product.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
@@ -7,28 +7,28 @@ import { faStar } from "@fortawesome/free-solid-svg-icons/faStar";
 import Button from "../Button/Button";
 import { Product } from "@/types/Product";
 import ChangeCount from "../ChangeCount/ChangeCount";
+import clsx from "clsx";
+import { ThemeContext } from "@/context/ThemeContext/ThemeContext";
+import { addFavorite, incrementCart } from "@/actions";
+import { CartContext } from "@/context/CartContext/CartContext";
 
 type ProductProps = {
   product: Product;
-  onIncrement: (product: Product) => void;
-  onDecrement: (product: Product) => void;
-  onFavorite: (product: Product) => void;
 };
 
 const ProductCard = ({
   product,
-  onIncrement,
-  onDecrement,
-  onFavorite,
 }: ProductProps) => {
+  const {theme} = useContext(ThemeContext);
+  const {state, dispatch} = useContext(CartContext);
   return (
-    <div className={classes.productCard}>
+    <div className={clsx(classes.productCard, classes[`productCard__${theme}`])}>
       <div className={classes.header}>
         <div className={classes.rating}>
           <FontAwesomeIcon icon={faStar} style={{ color: "#ff9935" }} />
           <p>{product.rating}</p>
         </div>
-        <div className={classes.favorite} onClick={() => onFavorite(product)}>
+        <div className={classes.favorite} onClick={() => dispatch(addFavorite(product))}>
           {product.isFavorite ? (
             <FontAwesomeIcon icon={faHeartSolid} style={{ color: "red" }} />
           ) : (
@@ -48,11 +48,9 @@ const ProductCard = ({
         {product.count && product.count > 0 ? (
           <ChangeCount
             product={product}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
           />
         ) : (
-          <Button onClick={() => onIncrement(product)}>Купить</Button>
+          <Button onClick={() => dispatch(incrementCart(product))}>Купить</Button>
         )}
       </div>
     </div>
